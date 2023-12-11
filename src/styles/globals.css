@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.outer-container {
+  width: 256px;
+  height: 256px;
+  border-radius: 15px; /* Set border radius for rounded corners */
+}
+
+
+.gradient-border {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0; /* Set background color */
+  border: 2px solid transparent; /* Set initial border */
+  background-clip: padding-box; /* Ensure background doesn't overlap the border */
+
+  /* Set the gradient for the border */
+  border-image: linear-gradient(to bottom right, #ff0059, #ff6a00);
+  border-image-slice: 1;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(5px, -5px);
+  }
+  60% {
+    transform: translate(-5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch {
+  animation: glitch 0.1s infinite;
+}
+
+@keyframes gradientColor {
+  0% {
+    color: white;
+  }
+  50% {
+    color: hotpink;
+  }
+  100% {
+    color: orange;
+  }
+}
+
+.gradient-text {
+  animation: gradientColor 3s ease-in-out;
+}
+
+.gradient-text-p {
+  animation: gradientColor 3s ease-in-out;
+  background: linear-gradient(45deg, hotpink, orange);
+  -webkit-background-clip: text;
+  color: transparent;
+}
